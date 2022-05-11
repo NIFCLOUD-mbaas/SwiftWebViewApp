@@ -21,9 +21,9 @@ class WebViewController: UIViewController {
         webView.scrollView.isScrollEnabled = true
         
         // webViewに表示する
-        let nsurl = NSURL(string: url)
-        let request = NSURLRequest(url: nsurl as! URL)
-        self.webView.loadRequest(request as URLRequest)
+        guard let nsurl = URL(string: url) else { return }
+        let request = URLRequest(url: nsurl)
+        self.webView.loadRequest(request)
     }
 
     override func didReceiveMemoryWarning() {

@@ -15,10 +15,10 @@ _2016/10/27作成_
 
 ## 動作環境
 
-* Mac OS 11.6(Big Sur)
-* Xcode Version 13.0
-* Simulator Version 13.0(970)
-* iPhone X (iOS15.0.2)
+* Mac OS 11.5.2(Big Sur)
+* Xcode ver. 13.2.1
+* Simulator 13 Pro Max
+* iPhone 11 Pro Max (iOS15.2.1)
 
 ※上記内容で動作確認をしています。
 
@@ -126,9 +126,9 @@ class WebViewController: UIViewController {
         webView.scrollView.isScrollEnabled = true
 
         // webViewに表示する
-        let nsurl = NSURL(string: url)
-        let request = NSURLRequest(url: nsurl as! URL)
-        self.webView.loadRequest(request as URLRequest)
+        guard let nsurl = URL(string: url) else { return }
+        let request = URLRequest(url: nsurl)
+        self.webView.loadRequest(request)
     }
 }
 ```
